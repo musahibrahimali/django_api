@@ -1,0 +1,15 @@
+/venv
+/dist
+/build
+
+.vs
+.vscode
+.vscode-test
+.vscode-test-workspace
+
+.idea
+.idea/workspace.xml
+
+# logs
+.log
+.logs
