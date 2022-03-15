@@ -1,15 +1,24 @@
 from django.db import models
+from common.models import BaseModel
 
 # Create a products model
-class Product(models.Model):
+class Product(BaseModel):
     # Create a name field
     name = models.CharField(max_length=200)
     # Create a description field
     description = models.TextField(blank=True, null=True)
     # Create a price field
     price = models.DecimalField(max_digits=6, decimal_places=2)
-    # Create a date_created field
-    date_created = models.DateTimeField(auto_now_add=True)
+
+    # sale price property
+    @property
+    def sale_price(self):
+        return self.price - (self.price * 0.8)
+
+    # get discount
+    def get_discount(self):
+        return self.price - (self.price * 0.1)
+
 
     def __str__(self):
         return self.name
