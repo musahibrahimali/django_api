@@ -13,11 +13,11 @@ class Product(BaseModel):
     # sale price property
     @property
     def sale_price(self):
-        return self.price - (self.price * 0.8)
+        return "%.2f" % (float(self.price) * 0.8)
 
     # get discount
     def get_discount(self):
-        return self.price - (self.price * 0.1)
+        return "%.2f" % (float(self.price) * 0.8)
 
 
     def __str__(self):
