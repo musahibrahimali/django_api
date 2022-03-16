@@ -11,21 +11,19 @@ def products(request):
         in the database related to the products model
     '''
     instance = Product.objects.all()
-    # if instance
     if instance:
-        serializer = ProductSerializer(instance)
-        if serializer:
-            return Response(serializer.data)
-        return Response({"message": "No products found"})
-    return Response({'message': 'No data found'})
+        serializer = ProductSerializer(instance, many=True)
+        return Response(serializer.data)
+    return Response({'message': 'No products found'})
 
 
 # get product by id
 @api_view(['GET'])
-def product(request, id):
+def productById(request, id):
     data = Product.objects.get(pk=id)
     if data:
-        return Response(ProductSerializer(data).data)
+        serializer = ProductSerializer(data)
+        return Response(serializer.data)
     return Response({'message': 'No data found'})
 
 

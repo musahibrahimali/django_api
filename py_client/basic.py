@@ -26,9 +26,10 @@ def get_all_products():
     return response
 
 
+# main function
 def main():
-    response = create_product(1)
-    # response = get_all_products()
+    # response = create_product(1)
+    response = get_all_products()
     print(response)
 
 
